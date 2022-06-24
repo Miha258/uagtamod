@@ -17,6 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\src\UaRageMp.Common\UaRageMp.Common.csproj" />
+    <ProjectReference Include="..\src\UaRageMp.DAL\UaRageMp.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Bootstrapper">
       <HintPath>H:\Rage_server\RAGEMP\server-files\dotnet\runtime\Bootstrapper.dll</HintPath>
     </Reference>

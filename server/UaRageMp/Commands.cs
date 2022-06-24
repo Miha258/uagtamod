@@ -1,6 +1,6 @@
 ﻿using GTANetworkAPI;
 
-namespace RageMp.Vh
+namespace UaRageMp.Core
 {
     public class Commands: Script
     {

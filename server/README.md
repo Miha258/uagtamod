@@ -10,7 +10,7 @@
 
 ### Part 1
 
-- Go to `UaRageMp.csproj`:
+- Go to `UaRageMp.Core.csproj`:
 - Change `"OutputPath"` tag to your `resources PATH`;
 - Change `"HintPath"` tag to your resources `Bootstrapper.dll`;
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RageMp.Vh
+namespace UaRageMp.Core
 {
     class Program
     {
