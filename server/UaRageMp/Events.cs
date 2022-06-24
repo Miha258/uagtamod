@@ -1,7 +1,7 @@
 ﻿using GTANetworkAPI;
 using Newtonsoft.Json;
 
-namespace RageMp.Vh
+namespace UaRageMp.Core
 {
     public class Events: Script
     {
