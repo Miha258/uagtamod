@@ -13,14 +13,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\src\UaRageMp.DAL\UaRageMp.DAL.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="Bootstrapper">
       <HintPath>H:\Rage_server\RAGEMP\server-files\dotnet\runtime\Bootstrapper.dll</HintPath>
     </Reference>
