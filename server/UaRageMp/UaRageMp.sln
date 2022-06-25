@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UaRageMp.Core", "UaRageMp.Core.csproj", "{9FDC341B-C835-4D46-8EF9-E6B52B1EC884}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UaRageMp.DAL", "..\src\UaRageMp.DAL\UaRageMp.DAL.csproj", "{F970AC5C-17EA-4E97-821F-2888AE24CFE2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UaRageMp.Common", "..\src\UaRageMp.Common\UaRageMp.Common.csproj", "{F8A07087-E978-4E68-B58B-93BDDFA5FFBB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FA05E0A5-986F-4EEE-A5EF-994A5EC646F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +17,6 @@ Global
 		{9FDC341B-C835-4D46-8EF9-E6B52B1EC884}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FDC341B-C835-4D46-8EF9-E6B52B1EC884}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FDC341B-C835-4D46-8EF9-E6B52B1EC884}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F970AC5C-17EA-4E97-821F-2888AE24CFE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F970AC5C-17EA-4E97-821F-2888AE24CFE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F970AC5C-17EA-4E97-821F-2888AE24CFE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F970AC5C-17EA-4E97-821F-2888AE24CFE2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F8A07087-E978-4E68-B58B-93BDDFA5FFBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F8A07087-E978-4E68-B58B-93BDDFA5FFBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F8A07087-E978-4E68-B58B-93BDDFA5FFBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F8A07087-E978-4E68-B58B-93BDDFA5FFBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

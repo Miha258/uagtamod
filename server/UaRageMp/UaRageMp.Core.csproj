@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\UaRageMp.Common\UaRageMp.Common.csproj" />
     <ProjectReference Include="..\src\UaRageMp.DAL\UaRageMp.DAL.csproj" />
   </ItemGroup>
 
