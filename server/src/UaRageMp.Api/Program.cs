@@ -1,3 +1,4 @@
+using MediatR;
 using UaRageMp.Api.Models.Db;
 using UaRageMp.Api.Services.Db;
 
@@ -8,10 +9,15 @@ builder.Services.Configure<DbSettings>(
 
 builder.Services.AddSingleton<UserSrv>();
 
+builder.Services.AddMediatR(typeof(Program));
+
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.CustomSchemaIds(type => type.ToString());
+});
 
 var app = builder.Build();
 

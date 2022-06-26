@@ -6,7 +6,7 @@ namespace UaRageMp.Api.Services.Db
 {
     public class BaseDbSrv<T> where T : class
     {
-        private readonly IMongoCollection<T> _collection;
+        protected readonly IMongoCollection<T> _collection;
 
         public BaseDbSrv(
             IOptions<DbSettings> bookStoreDatabaseSettings)
