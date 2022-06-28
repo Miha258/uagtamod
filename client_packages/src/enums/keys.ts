@@ -69,7 +69,6 @@ export enum RageKeys {
     LeftWindows = 0x5B,
     RightWindows = 0x5C,
     ApplicationsKey	= 0x5D,	
-    VK_SLEEP = 0x5F,
     NUMPAD0 = 0x60,	
     NUMPAD1 = 0x61,	
     NUMPAD2	= 0x62,	
