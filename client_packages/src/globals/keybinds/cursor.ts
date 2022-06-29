@@ -1,4 +1,4 @@
-import { RageKeys } from '../enums/keys'
+import { RageKeys } from '../../enums/keys'
 
 
 //Show Cursor
