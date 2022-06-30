@@ -1,4 +1,6 @@
-mp.game.vehicle.defaultEngineBehaviour = false
+mp.events.add(RageEnums.EventKey.PLAYER_READY, () => {
+    mp.game.vehicle.defaultEngineBehaviour = false
+})
 
 mp.events.add('playerEnterVehicle', () => { 
     mp.players.local.setConfigFlag(429, true) //PED_FLAG_STOP_ENGINE_TURNING
