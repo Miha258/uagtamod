@@ -1,0 +1,521 @@
+// SPEEDOMETER //
+.hudspeed {
+    position: absolute;
+    bottom: 17px;
+    right: 42px;
+    
+    
+    
+    &__circle {
+        position: relative;
+        width: 27.5vh;
+        height: 22.4vh;
+    }
+
+    &__params {
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        svg {
+            @media (min-width: $breakpoint2000) {
+                transform: scale(2);
+            }
+            @media (min-width: $breakpoint4000) {
+                transform: scale(3);
+            }
+        }
+    }
+
+    &__speed-line {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 100%;
+    }
+
+
+    &__speed {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &-text {
+            font-weight: 700;
+            font-size: 1.75rem;
+            text-align: center;
+            color: $whiteColor;
+
+            @media (min-width: $breakpoint2000) {
+                font-size: 5rem;
+            }
+            @media (min-width: $breakpoint4000) {
+                font-size: 6.5rem;
+            }
+        }
+        
+        &-description {
+            font-weight: 400;
+            font-size: 0.8rem;
+            text-align: center;
+            color: $whiteColor;
+            @media (min-width: $breakpoint2000) {
+                font-size: 2rem;
+            }
+            @media (min-width: $breakpoint4000) {
+                font-size: 2.5rem;
+            }
+            
+        }
+    }
+    
+    &__fuel {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 15%;
+        
+        &-item {
+            height: 2rem;
+            width: 37px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            @media (min-width: $breakpoint2000) {
+                height: 5rem;
+            }
+            @media (min-width: $breakpoint4000) {
+                height: 8rem;
+            }
+        }
+        
+        &-text {
+            font-weight: 500;
+            font-size: 0.7rem;
+            color: $whiteColor;
+            @media (min-width: $breakpoint2000) {
+                font-size: 1.5rem;
+            }
+            @media (min-width: $breakpoint4000) {
+                font-size: 2.75rem;
+            }
+            
+            span {
+                color: $greyColor;
+            }
+        }
+        
+        &-icon {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            @media (min-width: $breakpoint2000) {
+                transform: scale(3);
+            }
+            @media (min-width: $breakpoint4000) {
+                transform: scale(5);
+            }
+        }
+        
+        &-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+
+            &-full {
+                top: 0;
+                left: 0;
+                position: absolute;
+                z-index: 2;
+            }
+        }
+    }
+}
+
+
+// HUD INVITE //
+.hudinvite {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &__item {
+        background: $mainBgColor;
+        border-radius: 25px;
+        padding: 11px 30px 20px;
+        position: relative;
+        max-width: 40vh;
+        max-height: 25vh;
+        @media (min-width: $breakpoint4000) {
+            padding: 15px 80px;
+        }
+    }
+
+    &__title {
+        color: $blueColor;
+        font-weight: 700;
+        font-size: 0.8rem;
+        text-align: center;
+        @media (min-width: $breakpoint1400) {
+            font-size: 1.1rem;
+        }
+        @media (min-width: $breakpoint2000) {
+            font-size: 2rem;
+        }
+        @media (min-width: $breakpoint4000) {
+            font-size: 3rem;
+        }
+    }
+    
+    &__text {
+        font-weight: 500;
+        font-size: 0.7rem;
+        text-align: center;
+        color: #F2F2F2;
+        @media (min-width: $breakpoint1400) {
+            font-size: 0.95rem;
+        }
+        @media (min-width: $breakpoint2000) {
+            font-size: 1.5rem;
+        }
+        @media (min-width: $breakpoint4000) {
+            font-size: 2rem;
+        }
+    }
+
+    &__person {
+
+        &-one {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -25px;
+            @media (min-width: $breakpoint2000) {
+                width: 5rem;
+            }
+            @media (min-width: $breakpoint4000) {
+                width: 7rem;
+            }
+        }
+        
+        &-two {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -25px;
+            @media (min-width: $breakpoint2000) {
+                width: 5rem;
+            }
+            @media (min-width: $breakpoint4000) {
+                width: 7rem;
+            }
+        }
+    }
+}
+
+// BALLANCE //
+.hudballance {
+    position: absolute;
+    right: 12px;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    
+    &__line {
+        width: 1px;
+        height: 100%;
+        background: $whiteColor;
+        content: '';
+        margin: 0px 5px 0px 10px;
+    }
+    
+    &__money {
+        color: $whiteColor;
+        font-weight: 500;
+        font-size: 1rem;
+        @media (min-width: $breakpoint2000) {
+            font-size: 1.75rem;
+        }
+        @media (min-width: $breakpoint4000) {
+            font-size: 3rem;
+        }
+        
+        span {
+            color: $greyColor;
+        }
+    }
+    
+    
+    &__item {
+        background: $mainBgColor;
+        border-radius: 5px;
+        padding: 5px 5px 5px 10px;
+        display: flex;
+        align-items: center;
+        height: 30px;
+        justify-content: space-between;
+        @media (min-width: $breakpoint2000) {
+            padding: 20px 15px;
+        }
+        @media (min-width: $breakpoint4000) {
+            padding: 30px 15px;
+        }
+        
+        img {
+            width: 1rem;
+            @media (min-width: $breakpoint2000) {
+                width: 2rem;
+            }
+            @media (min-width: $breakpoint4000) {
+                width: 3rem;
+            }
+        }
+    }
+}
+
+// HUD INFO //
+.hudinfo {
+    position: absolute;
+    bottom: 20px;
+    left: 17%;
+
+    &__micro {
+        display: flex;
+        gap: 11px;
+        margin-bottom: 7px;
+
+        img {
+            cursor: pointer;
+            @media (min-width: $breakpoint2000) {
+                width: 3rem;
+            }
+            @media (min-width: $breakpoint4000) {
+                width: 5rem;
+            }
+        }
+    }
+
+    &__item {
+        background: $mainBgColor;
+        border-radius: 5px;
+        padding: 7px 25px 7px 15px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        gap: 15px;
+        min-width:180px;
+        margin-top: 8px;
+
+        &::before {
+            position: absolute;
+            content: '';
+            border-radius: 1px;
+            width: 4px;
+            height: 34px;
+            left: 50%;
+            transform: translateX(-50%);
+            left: 0;
+            background: $blueColor;
+        }
+
+    }
+
+    &__content {
+
+        &-title {
+            color: $whiteColor;
+            font-weight: 500;
+            font-size: 1rem;
+            @media (min-width: $breakpoint2000) {
+                font-size: 2rem;
+            }
+            @media (min-width: $breakpoint2000) {
+                font-size: 4rem;
+            }
+            
+            &.blueColor {
+                color: $blueColor;
+            }
+        }
+
+        &-text {
+            font-size: 0.8rem;
+            color: $whiteColor;
+            @media (min-width: $breakpoint2000) {
+                font-size: 1.7rem;
+            }
+            @media (min-width: $breakpoint2000) {
+                font-size: 3rem;
+            }
+        }
+    }
+}
+
+
+// TABS //
+.hudtab {
+    position: absolute;
+    right: 12px;
+    top: 40%;
+    transform: translateY(-60%);
+    display: flex;
+    flex-direction: column;
+    row-gap: 7px;
+
+
+    &__item {
+        border-radius: 5px;
+        text-align: right;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 5px;
+        @media (min-width: $breakpoint4000) {
+            gap: 10px;
+        }
+    }
+
+    &__name {
+        font-size: 1rem;
+        color: $whiteColor;
+        @media (min-width: $breakpoint2000) {
+            font-size: 1.5rem;
+        }
+        @media (min-width: $breakpoint4000) {
+            font-size: 2.5rem;
+        }
+    }
+    
+    &__key {
+        padding: 5px 9px;
+        background: $greyColor;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        line-height: 0.8em;
+        text-transform: uppercase;
+        color: $whiteColor;
+        @media (min-width: $breakpoint2000) {
+            font-size: 1.8rem;
+        }
+        @media (min-width: $breakpoint4000) {
+            font-size: 3rem;
+        }
+    }
+}
+
+
+
+// NOTIFY //
+@keyframes showNotify {
+    0% {
+        $width: 100%;
+    }
+
+    100% {
+        $width: 0%;
+    }
+}
+
+.hudnotify {
+    position: absolute;
+    left: 15px;
+    bottom: 35%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+    &__item {
+        background-color: $mainBgColor;
+        border-radius: 5px 5px 2px 2px;
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        max-width: 30vw;
+        gap: 18px;
+        border-bottom: 5px solid rgba(255, 255, 255, 0.15);
+        position: relative;
+
+        @media (min-width: $breakpoint4000) {
+            padding: 20px 30px;
+        }
+
+        &::after {
+            $width: 100%;
+            width: $width;
+            position: absolute;
+            content: '';
+            height: 5px;
+            bottom: -5px;
+            border-radius: 0px 0px 0px 2px;
+            left: 0;
+
+            @if $width ==100% {
+                border-radius: 0px 0px 2px 2px;
+            }
+        }
+
+    }
+
+
+    &__content {
+        &-title {
+            color: $greyColor;
+            font-size: 0.8rem;
+
+            @media (min-width: $breakpoint2000) {
+                font-size: 2.2rem;
+            }
+            @media (min-width: $breakpoint2000) {
+                font-size: 3rem;
+            }
+        }
+
+        &-text {
+            color: $whiteColor;
+            margin-top: 5px;
+            font-size: 0.7rem;
+
+            @media (min-width: $breakpoint2000) {
+                font-size: 1.8rem;
+            }
+            @media (min-width: $breakpoint4000) {
+                font-size: 2.5rem;
+            }
+        }
+    }
+}
+
+.whiteLine {
+    &::after {
+        background: rgba(255, 255, 255, 0.15);
+    }
+}
+
+.greenLine {
+    &::after {
+        background: #1CD269;
+    }
+}
+
+.yellowLine {
+    &::after {
+        background: #F2C94C;
+    }
+}
+
+.redLine {
+    &::after {
+        background: #EB5757;
+    }
+}
