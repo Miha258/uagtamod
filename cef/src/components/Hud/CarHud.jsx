@@ -4,9 +4,11 @@ import PeopleHud from './PeopleHud';
 const CarHud = () => {
     const [fuel, setFuel] = useState(59);
     const [speed, setSpeed] = useState(90);
-    // const [speedLine, setSpedLine] = useState('704.295, 504.295');
-    const speedLine = 804;
-    const fuelLine = 508;
+    const maxSpeed = 150
+    const speedLine = 504 + ((504/maxSpeed) * speed);
+    const maxFuel = 120
+    const fuelLine = 508 + ((508/maxFuel) * fuel);
+    
 
     return (
         <div>
