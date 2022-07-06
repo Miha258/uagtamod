@@ -49,7 +49,7 @@ namespace UAGTA.Vehilcles.RentVehicles
         {
             if (vehicle.HasData("RentedBy"))
             {
-                Vehicle player = vehicle.GetData<Vehicle>("RentedBy");
+                Player player = vehicle.GetData<Player>("RentedBy");
                 vehicle.SetData<Player>("RentedBy", null);
                 player.SetData<Vehicle>("RentedVehicle", null);
             }
