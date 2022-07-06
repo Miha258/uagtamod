@@ -7,7 +7,6 @@ interface IPedDialogServiceData {
 }
 
 
-
 export class PedDialogService {
     public ped!: PedMp
     public colshape!: ColshapeMp 
@@ -26,8 +25,6 @@ export class PedDialogService {
             this.heading,
             this.dimention
         )
-        // if (this.animDict && this.animName){
-        // }
         mp.labels.new(this.name,new mp.Vector3(this.coords.x, this.coords.y, this.coords.z + 1.2),{
             dimension: this.dimention,
             los: true,
@@ -39,9 +36,9 @@ export class PedDialogService {
         
          
         await mp.game.waitAsync(300)
-        if (this.animDict && this.animDict && !this.scenario){
+        if (this.animDict && this.animName && !this.scenario){
             mp.game.streaming.requestAnimDict(this.animDict)
-        this.ped.taskPlayAnim(this.animDict,this.animDict, 8.0, 1.0, -1, 1, 1.0, true, true, true)
+            this.ped.taskPlayAnim(this.animDict,this.animName, 8.0, 1.0, -1, 1, 1.0, true, true, true)
         } else if (!this.animDict && !this.animDict && this.scenario) {
             this.ped.taskStartScenarioInPlace(this.scenario, 0, false)
         }
