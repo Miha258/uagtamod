@@ -8,4 +8,4 @@ mp.events.add('playerEnterVehicle', () => {
 
 mp.events.add('playerLeaveVehicle', () => {
     mp.players.local.setConfigFlag(241,true) //PED_FLAG_DISABLE_STOPPING_VEH_ENGINE
-})
+})  
