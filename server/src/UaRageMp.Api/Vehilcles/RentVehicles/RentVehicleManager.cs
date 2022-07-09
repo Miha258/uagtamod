@@ -1,14 +1,19 @@
-﻿using GTANetworkAPI;
+using GTANetworkAPI;
 
 
 namespace UAGTA.Vehilcles.RentVehicles
 {
     class RentVehicleManager: RentPoint
     {
+        private int _rentTime; //Miliseconds
+        
+        public RentVehicleManager(int _rentTime)
+        {
+            this._rentTime = _rentTime;
+        }
         [RemoteEvent("playerClickedRentButton")]
         public void PlayerClickedRentButton(Player player, bool isAccepted, Vehicle rentedVehicle)
         {
- 
             if (player.Vehicle is null)
             {
                 player.SendChatMessage("Ви повинні бути в транспорті");
@@ -21,7 +26,7 @@ namespace UAGTA.Vehilcles.RentVehicles
                 NAPI.Task.Run(() =>
                 {
                     this._SetRentedVehicleOnDefaultPosition(player);
-                }, 300000);
+                }, this._rentTime);
             }
             else if (!isAccepted)
             {
