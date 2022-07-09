@@ -1,4 +1,4 @@
-﻿using GTANetworkAPI;
+using GTANetworkAPI;
 
 namespace UAGTA.Vehilcles.RentVehicles
 {
