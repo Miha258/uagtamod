@@ -1,5 +1,6 @@
 using GTANetworkAPI;
 
+
 namespace UAGTA.Vehilcles.RentVehicles
 {
     class Scooters: Script
