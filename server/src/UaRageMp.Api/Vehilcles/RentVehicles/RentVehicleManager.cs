@@ -1,10 +1,35 @@
-﻿using System;
-using GTANetworkAPI;
+﻿using GTANetworkAPI;
+
 
 namespace UAGTA.Vehilcles.RentVehicles
 {
     class RentVehicleManager: RentPoint
     {
+        [RemoteEvent("playerClickedRentButton")]
+        public void PlayerClickedRentButton(Player player, bool isAccepted, Vehicle rentedVehicle)
+        {
+ 
+            if (player.Vehicle is null)
+            {
+                player.SendChatMessage("Ви повинні бути в транспорті");
+            }
+            else if (isAccepted)
+            {
+                rentedVehicle.EngineStatus = true;
+                player.SetData<Vehicle>("RentedVehicle", rentedVehicle);
+                rentedVehicle.SetData<Player>("RentedBy", player);
+                NAPI.Task.Run(() =>
+                {
+                    this._SetRentedVehicleOnDefaultPosition(player);
+                }, 300000);
+            }
+            else if (!isAccepted)
+            {
+                rentedVehicle.EngineStatus = false;
+                player.WarpOutOfVehicle();
+            }
+            player.TriggerEvent("activateVehicleRentMenue", false);
+        }
         private void _SetRentedVehicleOnDefaultPosition(Player player)
         {
             Vehicle rentedVehicle = player.GetData<Vehicle>("RentedVehicle");
@@ -35,7 +60,6 @@ namespace UAGTA.Vehilcles.RentVehicles
             int intType = (int)type;
             if (intType.Equals(0))
             {
-                Console.WriteLine(123);
                 NAPI.Task.Run(() =>
                 {
                     if (!player.Exists)
