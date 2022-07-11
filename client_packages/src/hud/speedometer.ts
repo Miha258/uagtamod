@@ -1,7 +1,7 @@
 import { hud } from './main'
 
-
 let vehiclMaxSpeed: number
+
 
 mp.events.add('playerEnterVehicle', (vehicle: VehicleMp) => {
     vehiclMaxSpeed = mp.game.vehicle.getVehicleModelMaxSpeed(vehicle.getModel())
