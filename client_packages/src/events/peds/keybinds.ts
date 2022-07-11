@@ -25,6 +25,6 @@ mp.keys.bind(RageKeys.E,false,() => {
             boneIndex,
             openCameraSettings
         )
-        dialogPed.data.dialogBrowser = mp.browsers.new("package://cef/dialogs/starterquest/index.html")
+        dialogPed.data.dialogBrowser = mp.browsers.new("package://cef/dialogs/index.html")
     }
 })
