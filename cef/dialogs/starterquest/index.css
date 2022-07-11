@@ -1,0 +1,32 @@
+* {
+    margin: 0
+}
+
+html, body {
+    height: 100%;
+}
+
+
+body {
+    background: radial-gradient(circle, rgba(210,172,74,0) 47%, rgba(237,145,39,0.6054796918767507) 100%);
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+    display: table;
+}
+.wrapper {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+    padding: 20rem;
+}
+
+p {
+    color: whitesmoke;
+    font-size: 25px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 20rem;
+}
