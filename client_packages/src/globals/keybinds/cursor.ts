@@ -1,8 +1,9 @@
 import { RageKeys } from '../../enums/keys'
 
+//show/diable cursor
 
-//Show Cursor
-mp.keys.bind(RageKeys.F2,false,() => {
+mp.keys.bind(RageKeys.KEY2,false,() => {
     const state = mp.gui.cursor.visible
-    mp.gui.cursor.show(!state,!state)
+    mp.events.call("showCursor", !state)
 })
+
