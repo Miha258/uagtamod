@@ -7,6 +7,15 @@ mp.events.addProc("reciveStarterDialog",() => {
     return dialogPed?.dialogText.join('  ')
 })
 
+mp.events.addProc("reciveStarterButtons",() => {
+    const dialogPed = dialogPeds.find(dialogPed => dialogPed.data.dialogActive && dialogPed.data.dialogBrowser)
+    dialogPed?.dialogButtons?.forEach(button => {
+        mp.events.add("buttonCallback:"+button.name,button.callback)
+    })
+    const dialogButtons = dialogPed?.dialogButtons?.filter(button => button.name)
+    return dialogButtons?.join(' ')
+})
+
 mp.events.add("closeStarterDialog",() => {
     const dialogPed = dialogPeds.find(dialogPed => dialogPed.data.dialogActive && dialogPed.data.dialogBrowser)
     if (dialogPed){
