@@ -2,27 +2,33 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-
+using System;
 
 namespace UAGTA.Vehilcles.RentVehicles
 {
-    class RentPoint
+    abstract class RentPoint
     {
-        protected Dictionary<int, Vector3[]> vehicles = new Dictionary<int, Vector3[]>();
+        private List<int> vehicles = new List<int>();
+        private int _rentTime; //Miliseconds
+        
+        public RentPoint(int _rentTime) {
+            this._rentTime = _rentTime;
+        }
 
         public void SpawRentVehicles(VehicleHash model, Vector3[] positions, Vector3[] rotations, int color1, int color2)
         {   
             var vehiclesPositionsAndRotations = positions.Zip(rotations, (position, rotation) => new { Position = position, Rotation = rotation });
             Task.Run(async () =>
             {
-
-                foreach (var pr in vehiclesPositionsAndRotations)
+                foreach (var vehicleData in vehiclesPositionsAndRotations)
                 {
                     await Task.Delay(200);
                     NAPI.Task.Run(() =>
                     {
-                        Vehicle rentVehicle = NAPI.Vehicle.CreateVehicle(model, pr.Position, pr.Rotation, color1, color2);
-                        this.vehicles.Add(rentVehicle.HashCode, new Vector3[2] { pr.Position, pr.Rotation });
+                        Vehicle rentVehicle = NAPI.Vehicle.CreateVehicle(model, vehicleData.Position, vehicleData.Rotation, color1, color2);
+                        rentVehicle.SetData<Vector3>("DefaultPosition", vehicleData.Position);
+                        rentVehicle.SetData<Vector3>("DefaultRotation", vehicleData.Rotation);
+                        this.vehicles.Add(rentVehicle.HashCode);
                     });
                 }
             });
@@ -33,7 +39,7 @@ namespace UAGTA.Vehilcles.RentVehicles
             {
                 Player rentedBy = vehicle.GetData<Player>("RentedBy");
                 Vehicle rentedVehicle = player.GetData<Vehicle>("RentedVehicle");
-                if (this.vehicles.ContainsKey(vehicle.HashCode) && rentedVehicle != vehicle)
+                if (this.vehicles.Contains(vehicle.HashCode) && rentedVehicle != vehicle)
                 {
                     player.SendChatMessage("Ви не можете орeндувати більше одного транспорту");
                     player.WarpOutOfVehicle();
@@ -44,10 +50,11 @@ namespace UAGTA.Vehilcles.RentVehicles
                     player.WarpOutOfVehicle();
                 }
             }
-            else if (this.vehicles.ContainsKey(vehicle.HashCode) && seatID.Equals((sbyte)VehicleSeat.Driver))
+            else if (this.vehicles.Contains(vehicle.HashCode) && seatID.Equals((sbyte)VehicleSeat.Driver))
             {
                 string rentVehicleName = vehicle.DisplayName;
-                player.TriggerEvent("activateVehicleRentMenue", true, $"Ви бажаєте орендувати {rentVehicleName} за {rentPrice}$ ?", rentVehicleName);
+                Console.WriteLine(this._rentTime);
+                player.TriggerEvent("activateVehicleRentMenue", true, $"Ви бажаєте орендувати {rentVehicleName} за {rentPrice}$ ?", rentVehicleName, this._rentTime);
             }
         }
     }
