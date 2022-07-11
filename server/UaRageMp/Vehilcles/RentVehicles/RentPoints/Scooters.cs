@@ -4,7 +4,7 @@ namespace UAGTA.Vehilcles.RentVehicles
 {
     class Scooters: Script
     {
-        private static RentVehicleManager scooters = new RentVehicleManager();
+        private static RentVehicleManager scooters = new RentVehicleManager(300000);
 
         [ServerEvent(Event.ResourceStart)]
         public void SpawRentScooters()
