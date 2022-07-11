@@ -14,5 +14,4 @@ mp.events.add(RageEnums.EventKey.PLAYER_ENTER_COLSHAPE,(shape: ColshapeMp) => {
     if (dialogPed){
         dialogPed.data.enteredColshape = true
     }
-    
 })
