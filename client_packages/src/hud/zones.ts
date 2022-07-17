@@ -7,8 +7,8 @@ mp.events.add(RageEnums.EventKey.BROWSER_DOM_READY, (browser: BrowserMp) => {
             const playerStreet = mp.game.pathfind.getStreetNameAtCoord(playerPosition.x,playerPosition.y,playerPosition.z, 0, 0)
             const streetName = mp.game.ui.getStreetNameFromHashKey(playerStreet.streetName)
             const crossingRoad = mp.game.ui.getStreetNameFromHashKey(playerStreet.crossingRoad)
-            browser.execute(`window.trigger(\'setHudRegion\', \'${translateSereetName(streetName)}\')`)
-            browser.execute(`window.trigger(\'setHudStreet\', \'${translateSereetName(crossingRoad)}\')`)
+            browser.execute(`window.trigger('setHudRegion', '${translateSereetName(streetName)}')`)
+            browser.execute(`window.trigger('setHudStreet', '${translateSereetName(crossingRoad)}')`)
         },1000)
     }
 })
