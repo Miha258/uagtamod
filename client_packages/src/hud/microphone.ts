@@ -3,7 +3,7 @@ import { hud } from './main'
 
 
 mp.events.add('setHudMicrophoneState', (toggle: boolean) => {
-    hud.execute(`window.trigger(\'setHudMicrophoneState\', ${toggle})`)
+    hud.execute(`window.trigger('setHudMicrophoneState', ${toggle})`)
 })
 
 
