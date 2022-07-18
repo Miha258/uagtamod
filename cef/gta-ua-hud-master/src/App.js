@@ -2,10 +2,12 @@
 import './styles/style.scss';
 // COMPONENTS //
 import React from 'react';
-import Hud from './components/Hud/Hud';
+import Hud from './components/Hud';
+
 
 const App = () => {
-    return <Hud />;
+    return <Hud/>;
 };
+
 
 export default App;
