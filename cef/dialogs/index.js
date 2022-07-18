@@ -12,7 +12,7 @@ const App = {
         async getButtons(){
             const dialogButtons = await mp.events.callProc("reciveStarterButtons")
             if (dialogButtons){
-                return dialogButtons.split(' ')
+                return dialogButtons.split('  ')
             }
         },
         async getPhrases(){
