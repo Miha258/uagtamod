@@ -1,14 +1,12 @@
 import React, {useState} from 'react';
 import BallanceTabs from './BallanceTabs';
-import cashIcon from './cash.svg';
-import cardIcon from './card.svg';
 
 const BallanceList = () => {
     let yourmoney = '3.605.000';
 
     const [money, setMoney] = useState([
-        {money: yourmoney, icon: cashIcon, id: 'cash'},
-        {money: yourmoney, icon: cardIcon, id: 'card'},
+        {money: yourmoney, id: 'cash'},
+        {money: yourmoney, id: 'card'},
     ])
 
     return (
