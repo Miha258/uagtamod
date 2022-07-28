@@ -13,8 +13,8 @@
             <p id="dialogText">
                 {{this.phrase}}
             </p>
-            <div>
-                <button v-for="button in this.buttons" :key="button" style="display: inline-block; margin: 20px; width: 500px; height: 100px;" @click="clickCallbackButton">{{button}}</button>
+            <div class="wrapper__btns">
+                <button class="dialogs__btn" v-for="button in this.buttons" :key="button" @click="clickCallbackButton">{{button}}</button>
             </div>
         </div>
     </div>

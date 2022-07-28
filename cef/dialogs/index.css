@@ -1,3 +1,4 @@
+
 * {
     margin: 0
 }
@@ -8,25 +9,48 @@ html, body {
 
 
 body {
-    background: radial-gradient(circle, rgba(210,172,74,0) 47%, rgba(237,145,39,0.6054796918767507) 100%);
+    /* background: radial-gradient(circle, rgba(210,172,74,0) 47%, rgba(237,145,39,0.6054796918767507) 100%); */
+    background: coral;
+    height: 100vh;
 }
 
-.main {
-    height: 100%;
-    width: 100%;
-    display: table;
-}
 .wrapper {
-    display: table-cell;
-    height: 100%;
-    vertical-align: middle;
-    text-align: center;
-    padding: 20rem;
+    position: absolute;
+    bottom: 20px;
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: left;
 }
 
 p {
     color: whitesmoke;
-    font-size: 25px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: 20rem;
+    font-size: 1.25rem;
+    font-family:'e-Ukraine', sans-serif;
+}
+
+.wrapper__btns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 20px;
+}
+
+.dialogs__btn {
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 5px;
+    color: #262626;
+    font-size: 1.5rem;
+    padding: 5px;
+    cursor: pointer;
+    width: 48%;
+    transition: all 0.15s linear;
+}
+
+.dialogs__btn:hover {
+    background: #dc2626;
+    color: white;
 }
