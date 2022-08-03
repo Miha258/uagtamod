@@ -5,6 +5,7 @@ import HudInfoList from './HudInfo/HudInfoList'
 import BallanceList from './HudBallance/BallanceList'
 import HudInviteList from './HudInvite/HudInviteList'
 import HudChat from './HudChat/HudChat'
+import HudModal from './HudModal/HudModal';
 
 const PeopleHud = () => {
   return (
@@ -15,6 +16,7 @@ const PeopleHud = () => {
       <BallanceList />
       <HudInviteList />
       <HudChat />
+      <HudModal/>
     </div>
   )
 }
