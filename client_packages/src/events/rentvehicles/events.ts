@@ -1,7 +1,7 @@
 export let rentVehicleInfo: string
 let vehicleRentMenue: BrowserMp
 
-mp.events.add("activateVehicleRentMenue",(activate: boolean,text: string,vehicleName: string) => {
+mp.events.add("activateVehicleRentMenue",(activate: boolean, text: string, vehicleName: string) => {
     if (activate){
         mp.gui.cursor.show(true,true)
         rentVehicleInfo = text
