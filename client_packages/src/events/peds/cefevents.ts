@@ -4,16 +4,31 @@ import { CameraService, ICameraSettings } from '../../services/camera'
 
 mp.events.addProc("reciveStarterDialog",() => {
     const dialogPed = dialogPeds.find(dialogPed => dialogPed.data.dialogActive && dialogPed.data.dialogBrowser)
-    return dialogPed?.dialogText.join('  ')
+    if (dialogPed){
+        let dialog = dialogPed?.dialogTextGenerator
+        let dialogText = dialog?.next()
+        if (dialogText.done){
+            dialogPed.dialogTextGenerator = dialogPed.generateDialogText()
+            dialog = dialogPed.dialogTextGenerator
+            dialogText = dialog?.next()
+        }
+        return dialogText?.value?.join('  ')
+    }
 })
 
 mp.events.addProc("reciveStarterButtons",() => {
     const dialogPed = dialogPeds.find(dialogPed => dialogPed.data.dialogActive && dialogPed.data.dialogBrowser)
-    dialogPed?.dialogButtons?.forEach(button => {
-        mp.events.add("buttonCallback:"+button.name,button.callback)
-    })
-    const dialogButtons = dialogPed?.dialogButtons?.filter(button => button.name)
-    return dialogButtons?.join(' ')
+    if (dialogPed){
+        let dialog = dialogPed.dialogButtonsGenerator
+        let dialogButtons = dialog.next()
+        if (dialogButtons.done){
+            dialogPed.dialogButtonsGenerator = dialogPed.generateDialogButtons()
+            dialog = dialogPed.dialogButtonsGenerator
+            dialogButtons = dialog?.next()
+        }
+        const buttons = dialogButtons.value?.map(button => button.name)
+        return buttons?.join('  ')
+    }
 })
 
 mp.events.add("closeStarterDialog",() => {

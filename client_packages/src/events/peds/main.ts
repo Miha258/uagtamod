@@ -11,6 +11,10 @@ interface IDialogPedButton {
     callback: () => void
 }
 
+export interface IPedDialog {
+    text: string[],
+    buttons?: IDialogPedButton[]
+}
 
 
 class Ped {
@@ -50,11 +54,29 @@ class DialogPed extends Ped {
         dialogActive: false,
         dialogBrowser: undefined
     }
-    
-    constructor(protected pedHash: number, protected name: string, protected coords: Vector3Mp, protected heading: number, protected dimention: number | undefined, protected animDict: string | undefined, protected animName: string | undefined, protected scenario: string | undefined, public cameraOffset: ICameraOffset, public dialogText: string[], public dialogButtons?: IDialogPedButton[]){
+    public dialogTextGenerator
+    public dialogButtonsGenerator
+
+    constructor(protected pedHash: number, protected name: string, protected coords: Vector3Mp, protected heading: number, protected dimention: number | undefined, protected animDict: string | undefined, protected animName: string | undefined, protected scenario: string | undefined, public cameraOffset: ICameraOffset, public dialogs: IPedDialog[]) {
         super(pedHash , name, coords, heading, dimention,  animDict, animName, scenario)
-        this.dialogText = dialogText
-        this.dialogButtons = dialogButtons
+        this.dialogTextGenerator = this.generateDialogText()
+        this.dialogButtonsGenerator = this.generateDialogButtons()
+    }
+
+    *generateDialogText() {
+        if (this.dialogs){
+            for (let dialog of this.dialogs){
+                yield dialog.text
+            }
+        }
+    }
+
+    *generateDialogButtons() {
+        if (this.dialogs){
+            for (let dialog of this.dialogs){
+                yield dialog.buttons
+            }
+        }
     }
 
     override async init() {
@@ -73,7 +95,7 @@ class DialogPed extends Ped {
         })
         
         this.colshape = mp.colshapes.newSphere(this.coords.x,this.coords.y,this.coords.z,1,this.dimention)
-    
+        
         await mp.game.waitAsync(300)
         if (this.animDict && this.animName && !this.scenario){
             mp.game.streaming.requestAnimDict(this.animDict)
@@ -81,7 +103,8 @@ class DialogPed extends Ped {
         } else if (!this.animDict && !this.animDict && this.scenario) {
             this.ped.taskStartScenarioInPlace(this.scenario, 0, false)
         }
-    } 
+        this.dialogs.forEach(dialog => dialog.buttons?.forEach(button => mp.events.add("buttonCallback:"+button.name,button.callback)))
+    }
 }
 
 
@@ -96,17 +119,19 @@ const dialogPeds = [
         "WORLD_HUMAN_AA_SMOKE",
         {x: -0.6,y: 0,z: 0.75},
         [
-            'Привіт,я Джеймс,бачу ти новенький в штаті.Я можу тобі допомгти піднятися на ноги,бачу в тобі є якийсь потенціал',
-            'Можеш зїздити на {ім`я роботи},кажуть там можна нормально підзаробити',
-            'Тут,через дорогу,є мій знайомий,орендодавець.Можливо у нього щось є для тебе',
-            'Подальші інструкції вислю тобі на телефон,щасливо!'
-        ],
-        [
             {
-                name: 'Згода',
-                callback() {
-                    mp.gui.chat.push('test')
-                },
+                text: [
+                    'Привіт,я Джеймс,бачу ти новенький в штаті.Я можу тобі допомгти піднятися на ноги,бачу в тобі є якийсь потенціал',
+                    'Можеш зїздити на {ім`я роботи},кажуть там можна нормально підзаробити',
+                    'Тут,через дорогу,є мій знайомий,орендодавець.Можливо у нього щось є для тебе',
+                    'Подальші інструкції вислю тобі на телефон,щасливо!'
+                ],
+                buttons: [{
+                    name: 'Згода',
+                    callback() {
+                        mp.gui.chat.push('test')
+                    },
+                }]
             }
         ]
     ),
@@ -120,9 +145,51 @@ const dialogPeds = [
         undefined,
         "WORLD_HUMAN_AA_COFFEE",
         {x: 0.4,y: -0.6,z: 0.75},
-        [
-            'Я так розумію тобі потрібен скутер.Ціна: 200$.Час оренди: 10 хвилин',
+        [   {
+                text: [
+                    'Я так розумію тобі потрібен скутер.Ціна: 200$.Час оренди: 10 хвилин',
+                ]
+            }
         ],
+    ),
+    new DialogPed(
+        RageEnums.Hashes.Ped.S_M_Y_GARBAGE,
+        'Брюс',
+        new mp.Vector3(-411.75104, -2701.4, 6.000216),
+        -35,
+        0,
+        undefined,
+        undefined,
+        "WORLD_HUMAN_AA_SMOKE",
+        {x: 0.31,y: 0.36,z: 0.75},
+        [
+            {
+                text: [
+                    'Test'
+                ],
+                buttons: [
+                    {
+                        name: 'Почати роботу',
+                        callback() {
+                            mp.events.callRemote('StartJob')
+                        }
+                    }
+                ],
+            },
+            {
+                text: [
+                    'Test2'
+                ],
+                buttons: [
+                    {
+                        name: 'Завершити роботу'    ,
+                        callback() {
+                            mp.events.callRemote('EndJob')
+                        }
+                    }
+                ],
+            }
+        ]
     )
 ]
 
