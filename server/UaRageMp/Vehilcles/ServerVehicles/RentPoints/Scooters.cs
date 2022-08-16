@@ -1,10 +1,10 @@
 ﻿using GTANetworkAPI;
 
-namespace UAGTA.Vehilcles.RentVehicles
+namespace UAGTA.Vehilcles.ServerVehicles.RentPoints 
 {
-    class Scooters: Script
+    class Scooters : Script
     {
-        private static RentVehicleManager scooters = new RentVehicleManager(300000);
+        private static RentVehicleManager scooters = new RentVehicleManager(600000, 200);
 
         [ServerEvent(Event.ResourceStart)]
         public void SpawRentScooters()
@@ -54,7 +54,7 @@ namespace UAGTA.Vehilcles.RentVehicles
         [ServerEvent(Event.PlayerEnterVehicle)]
         public void PlayerSeatInRentedScooter(Player player, Vehicle vehicle, sbyte seatID)
         {
-            scooters.PlayerSeatInRentedVehicle(player, vehicle, seatID, 200);
+            scooters.PlayerSeatInVehicle(player, vehicle, seatID);
         }
         [ServerEvent(Event.PlayerDeath)]
         public void PlayerDeath(Player player, Player killer, uint reason)
@@ -69,7 +69,7 @@ namespace UAGTA.Vehilcles.RentVehicles
         [ServerEvent(Event.VehicleDeath)]
         public void ScooterDestroy(Vehicle vehicle)
         {
-            scooters.RentVehicleDestroyed(vehicle);
+            scooters.VehicleDestroyed(vehicle);
         }
     } 
 }
