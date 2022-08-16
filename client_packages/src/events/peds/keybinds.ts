@@ -5,7 +5,7 @@ import dialogPeds from './main'
 
 mp.keys.bind(RageKeys.E,false,() => {
     const dialogPed = dialogPeds.find(dialogPed => dialogPed.data.enteredColshape)
-    if (dialogPed?.data.enteredColshape){
+    if (dialogPed?.data.enteredColshape && !dialogPed?.data.dialogActive){
         dialogPed.data.dialogActive = true
         const pedPosition = dialogPed.ped.position
         const boneIndex = 12844 
