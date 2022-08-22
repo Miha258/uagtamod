@@ -1,9 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 // ASSETS //
 @import './vars';
 @import './fonts';
@@ -14,4 +8,5 @@
 
 body {
     font-family: 'e-Ukraine';
+    background-color: coral;
 }

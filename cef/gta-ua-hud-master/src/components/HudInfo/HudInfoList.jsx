@@ -18,14 +18,14 @@ class HudInfoList extends React.Component {
         this.state = {
             info: [
                 {
-                    icon: gpsIcon,
+                    icon: dataIcon,
                     title: this.time,
                     text: this.date,
                     id: 'hudPosition',
                     titleClasses: 'hudinfo__content-title',
                 },
                 {
-                    icon: dataIcon,
+                    icon: gpsIcon,
                     title: this.region,
                     text: this.street,
                     id: 'hudData',
@@ -61,14 +61,14 @@ class HudInfoList extends React.Component {
             this.date = `${day}.${mounth}.${this.now.getFullYear()}`
             this.setState({
                 info: [{
-                    icon: gpsIcon,
+                    icon: dataIcon,
                     title: this.time,
                     text: this.date,
                     id: 'hudData',
                     titleClasses: 'hudinfo__content-title',
                 },
                 {
-                    icon: dataIcon,
+                    icon: gpsIcon,
                     title: this.region,
                     text: this.street,
                     id: 'hudPosition',
