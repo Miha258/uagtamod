@@ -7,10 +7,10 @@ mp.keys.bind(RageKeys.E,false,() => {
         const vehicleEngineState = vehicle.getIsEngineRunning()
         if (vehicleEngineState){
             vehicle.setEngineOn(false,false,true)
-            mp.gui.chat.push("Ви заглушили двигун")
+            mp.events.call('sendDoneAlert', 'Ви заглушили двигун')
         } else {
             vehicle.setEngineOn(true,false,true)
-            mp.gui.chat.push("Ви завeли двигун")
+            mp.events.call('sendDoneAlert', 'Ви завели двигун')
             vehicle.setVariable("needStopEngine",false)
         }
     }
