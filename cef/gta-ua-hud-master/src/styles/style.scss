@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// ASSETS //
+@import './vars';
+@import './fonts';
+
+
+// COMPONENTS //
+@import './components/Hud';
+
+body {
+    font-family: 'e-Ukraine';
+}
